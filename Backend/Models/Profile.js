@@ -3,11 +3,16 @@
 const { Schema, model } = require("mongoose");
 const { schema } = require("./User");
 
-const profileSchema = new schema({
+const profileSchema = new Schema({
   user: {
     type: Schema.Types.ObjectId,
-    ref: "User",
+    ref: 'User',
     required: true,
+  },
+  name: {
+    type: String,
+    trim: true,
+    maxlength: 30,
   },
   title: {
     type: String,

@@ -1,10 +1,11 @@
 //Name, Phone, Email, Password, Profile
 
 const { Schema, model } = require("mongoose");
+const Profile = require("./Profile");
 
 const userSchema = new Schema(
   {
-    name: {
+    userName: {
       type: String,
       trim: true,
       required: true,
@@ -12,6 +13,7 @@ const userSchema = new Schema(
     phone: {
       type: Number,
       maxlength: 14,
+      minlength:11,
       required: true,
     },
     email: {
@@ -23,9 +25,13 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
+    confirmPassword: {
+      type: String,
+      required: true,
+    },
     profile: {
       type: Schema.Types.ObjectId,
-      ref: "profile",
+      ref: Profile,
     },
   },
   {
